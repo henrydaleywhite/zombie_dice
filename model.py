@@ -1,3 +1,5 @@
+import random
+
 DIE_FACES = {
     "brain": "👍",
     "shotgun": "👎",
@@ -41,3 +43,7 @@ dice_cup = [
     YELLOW_DIE, YELLOW_DIE, YELLOW_DIE, YELLOW_DIE, 
     RED_DIE, RED_DIE, RED_DIE
 ]
+
+
+def pull_dice():
+    pass

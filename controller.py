@@ -26,7 +26,7 @@ def main_menu():
 def play_game():
     while True:
         view.player_start(player_tracker)
-        break
+        current_dice = model.pull_dice()
 
 
 if __name__ == "__main__":
