@@ -22,3 +22,6 @@ def settings_menu(default_settings):
     if not 0 < default_settings[0] <= 4:
         bad_input()
         settings_menu(default_settings)
+
+def player_start(player):
+    print("Player {}'s turn.".format(player[0]))
