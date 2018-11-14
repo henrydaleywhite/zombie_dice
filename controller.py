@@ -12,7 +12,7 @@ def main_menu():
         if choice not in ('1', '2', '3'):
             view.bad_input()
         if choice == '1':
-            pass
+            break
         if choice == '2':
             view.settings_menu(default_settings)
             if not 0 < default_settings[0] <= 4:

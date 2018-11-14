@@ -1,16 +1,43 @@
-die_faces = {
+DIE_FACES = {
     "brain": "👍",
     "shotgun": "👎",
     "footprints": "👌"
 }
 
-red_die = {
-    "faces": tuple(die_faces["brain"] + die_faces["footprints"]*2 + die_faces["shotgun"]*3),
-    "occurences": 3
+
+RED_DIE = {
+    1: "shotgun",
+    2: "shotgun",
+    3: "shotgun",
+    4: "footprints",
+    5: "footprints",
+    6: "brain"
 }
-"""
-red_die = tuple(die_faces["brain"] + die_faces["footprints"]*2 + die_faces["shotgun"]*3)
-yellow_die = tuple(die_faces["brain"]*2 + footprints*2 + shotgun*3)
-green_die = tuple(brain*3 + footprints*2 + shotgun)
-base_dice_cup = tuple((green_die, green_die, green_die, green_die, green_die, green_die, red_die, red_die, red_die, yellow_die, yellow_die, yellow_die, yellow_die))
-"""
+
+
+GREEN_DIE = {
+    1: "shotgun",
+    2: "footprints",
+    3: "footprints",
+    4: "brain",
+    5: "brain",
+    6: "brain"
+}
+
+
+YELLOW_DIE = {
+    1: "shotgun",
+    2: "shotgun",
+    3: "footprints",
+    4: "footprints",
+    5: "brain",
+    6: "brain"
+}
+
+
+# base dice cup has green x 6, yellow x 4, red x 3
+dice_cup = [
+    GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, 
+    YELLOW_DIE, YELLOW_DIE, YELLOW_DIE, YELLOW_DIE, 
+    RED_DIE, RED_DIE, RED_DIE
+]
