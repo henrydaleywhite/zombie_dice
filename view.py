@@ -17,11 +17,25 @@ def exit_message():
     print("\nGoodbye!\n")
 
 
-def settings_menu(default_settings):
-    default_settings[0] = int(input("Number of players:\n"))
-    if not 0 < default_settings[0] <= 4:
-        bad_input()
-        settings_menu(default_settings)
+def settings_view(default_settings):
+    return int(input("Number of players:\n"))
+    
+
+def player_score(player_tracker, player_scores):
+    print("Current score:", player_scores[player_tracker[0]])
+
 
 def player_start(player):
     print("Player {}'s turn.".format(player[0]))
+
+
+def player_win(current_player):
+    print("Player {} wins!".format(current_player))
+
+
+def show_turn_options():
+    pass
+
+
+def show_current_dice(dice_in_hand):
+    pass

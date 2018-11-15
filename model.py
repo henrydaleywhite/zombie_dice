@@ -39,6 +39,9 @@ YELLOW_DIE = {
 }
 
 
+player_scores = {}
+
+
 # base dice cup has green x 6, yellow x 4, red x 3
 dice_cup = [
     GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, 
@@ -47,9 +50,17 @@ dice_cup = [
 ]
 
 
+def player_start_scores(num_players):
+    for i in range(1,num_players+1):
+        player_scores[i] = 0
+
+
 def pull_dice():
     MAX_HAND = 3
     for i in range(MAX_HAND-len(dice_in_hand)):
 	    die_index = random.randint(0,len(dice_cup)-1)
 	    drawn_die = dice_cup.pop(die_index)
 	    dice_in_hand.append(drawn_die)
+
+def next_player(current_player, number_players):
+    current_player[0] = (current_player % number_players) + 1
