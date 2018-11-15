@@ -2,6 +2,8 @@ import random
 
 dice_in_hand = []
 
+MAX_HAND_SIZE = 3
+
 DIE_FACES = {
     "brain": "👍",
     "shotgun": "👎",
@@ -67,11 +69,11 @@ def player_start_scores(num_players):
 
 def pull_dice():
     """Draw until player has 3 dice in hand"""
-    MAX_HAND = 3
-    for i in range(MAX_HAND-len(dice_in_hand)):
+    for i in range(MAX_HAND_SIZE-len(dice_in_hand)):
 	    die_index = random.randint(0,len(dice_cup)-1)
 	    drawn_die = dice_cup.pop(die_index)
 	    dice_in_hand.append(drawn_die)
+
 
 def next_player(current_player, number_players):
     """Move to next player"""
@@ -80,15 +82,13 @@ def next_player(current_player, number_players):
 
 def check_loss(current_shotguns):
     """Round ends if a player has rolled 3 or more shotguns"""
-    if current_shotguns >= 3:
-        return True
-    return False
-
+    return current_shotguns >= 3
+        
 
 def choice_roll_dice():
     """Die rolling"""
     roll_results = [[], [], []]
-    for i in range(3):
+    for i in range(MAX_HAND_SIZE):
         roll_int = random.randint(0,5)
         die_color = dice_in_hand[i]['color']
         die_result = dice_in_hand[i]['faces'][roll_int]
