@@ -87,7 +87,14 @@ def check_loss(current_shotguns):
 
 def choice_roll_dice():
     """Die rolling"""
-    pass
+    roll_results = [[], [], []]
+    for i in range(3):
+        roll_int = random.randint(0,5)
+        die_color = dice_in_hand[i]['color']
+        die_result = dice_in_hand[i]['faces'][roll_int]
+        die_result_symbol = DIE_FACES[die_result]
+        roll_results[i] = [die_color, die_result, die_result_symbol]
+    return roll_results
 
 
 def choice_bank_score(current_player, round_score):

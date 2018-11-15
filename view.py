@@ -55,8 +55,8 @@ def turn_choice_input():
 def show_current_dice(dice_in_hand):
     """Display the dice that the player currently holds"""
     print("\nDice in hand: ")
+    hand_str = ""
     for die in dice_in_hand:
-        print(die['color'], "Die")
+        hand_str += die['color'] + " Die, "
+    print(hand_str)
     print()
-        
-
