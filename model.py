@@ -10,32 +10,41 @@ DIE_FACES = {
 
 
 RED_DIE = {
-    1: "shotgun",
-    2: "shotgun",
-    3: "shotgun",
-    4: "footprints",
-    5: "footprints",
-    6: "brain"
+    "color": "Red",
+    "faces": {
+        1: "shotgun",
+        2: "shotgun",
+        3: "shotgun",
+        4: "footprints",
+        5: "footprints",
+        6: "brain"
+    }
 }
 
 
 GREEN_DIE = {
-    1: "shotgun",
-    2: "footprints",
-    3: "footprints",
-    4: "brain",
-    5: "brain",
-    6: "brain"
+    "color": "Green",
+    "faces": {
+        1: "shotgun",
+        2: "footprints",
+        3: "footprints",
+        4: "brain",
+        5: "brain",
+        6: "brain"
+    }
 }
 
 
 YELLOW_DIE = {
-    1: "shotgun",
-    2: "shotgun",
-    3: "footprints",
-    4: "footprints",
-    5: "brain",
-    6: "brain"
+    "color": "Yellow", 
+    "faces": {
+        1: "shotgun",
+        2: "shotgun",
+        3: "footprints",
+        4: "footprints",
+        5: "brain",
+        6: "brain"
+    }
 }
 
 
@@ -63,4 +72,18 @@ def pull_dice():
 	    dice_in_hand.append(drawn_die)
 
 def next_player(current_player, number_players):
-    current_player[0] = (current_player % number_players) + 1
+    current_player[0] = (current_player[0] % number_players) + 1
+
+
+def check_loss(current_shotguns):
+    if current_shotguns >= 3:
+        return True
+    return False
+
+
+def choice_roll_dice():
+    pass
+
+
+def choice_bank_score(current_player, round_score):
+    player_scores[current_player] += round_score

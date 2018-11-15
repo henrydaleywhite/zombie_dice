@@ -34,8 +34,13 @@ def player_win(current_player):
 
 
 def show_turn_options():
-    pass
+    print("1. Roll Dice")
+    print("2. Bank Score")
 
 
 def show_current_dice(dice_in_hand):
     pass
+
+
+def turn_choice_input():
+    return(input("Your choice: "))
