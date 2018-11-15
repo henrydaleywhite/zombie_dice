@@ -7,6 +7,7 @@ player_tracker = [1]
 
 
 def main_menu():
+    """Menu for play, settings, quit"""
     while True:
         view.display_menu(default_settings)
         choice = view.main_menu_input()
@@ -27,6 +28,7 @@ def main_menu():
 
 
 def play_game():
+    """Parent function for game functionality"""
     while True:
         win_condition = game_round()
         if win_condition:
@@ -37,19 +39,21 @@ def play_game():
 
 
 def game_round():
+    """Functionality for individual player rounds"""
     win_condition = model.player_scores[player_tracker[0]] >= 13
     view.player_start(player_tracker)
     current_shotguns = 0
     round_loss_condition = False
     while win_condition == False and round_loss_condition == False:
         view.player_score(player_tracker, model.player_scores)
-        model.pull_dice()
         view.show_current_dice(model.dice_in_hand)
         view.show_turn_options()
         turn_input = view.turn_choice_input()
         if turn_input not in ('1', '2'):
             view.bad_input()
         elif turn_input == '1':
+            model.pull_dice()
+            view.show_current_dice(model.dice_in_hand)
             roll_result = model.choice_roll_dice()
             round_loss_condition = model.check_loss(current_shotguns)
         else:

@@ -60,11 +60,13 @@ dice_cup = [
 
 
 def player_start_scores(num_players):
+    """Populate a blank dictionary with the number of players and starting score 0"""
     for i in range(1,num_players+1):
         player_scores[i] = 0
 
 
 def pull_dice():
+    """Draw until player has 3 dice in hand"""
     MAX_HAND = 3
     for i in range(MAX_HAND-len(dice_in_hand)):
 	    die_index = random.randint(0,len(dice_cup)-1)
@@ -72,18 +74,22 @@ def pull_dice():
 	    dice_in_hand.append(drawn_die)
 
 def next_player(current_player, number_players):
+    """Move to next player"""
     current_player[0] = (current_player[0] % number_players) + 1
 
 
 def check_loss(current_shotguns):
+    """Round ends if a player has rolled 3 or more shotguns"""
     if current_shotguns >= 3:
         return True
     return False
 
 
 def choice_roll_dice():
+    """Die rolling"""
     pass
 
 
 def choice_bank_score(current_player, round_score):
+    """Add score from this round to cumulative player score"""
     player_scores[current_player] += round_score
