@@ -1,5 +1,7 @@
 import random
 
+dice_in_hand = []
+
 DIE_FACES = {
     "brain": "👍",
     "shotgun": "👎",
@@ -46,4 +48,8 @@ dice_cup = [
 
 
 def pull_dice():
-    pass
+    MAX_HAND = 3
+    for i in range(MAX_HAND-len(dice_in_hand)):
+	    die_index = random.randint(0,len(dice_cup)-1)
+	    drawn_die = dice_cup.pop(die_index)
+	    dice_in_hand.append(drawn_die)

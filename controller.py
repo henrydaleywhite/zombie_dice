@@ -26,8 +26,11 @@ def main_menu():
 def play_game():
     while True:
         view.player_start(player_tracker)
-        current_dice = model.pull_dice()
-
+        model.pull_dice()
+        print(model.dice_in_hand)
+        print(model.dice_cup)
+        break
+        
 
 if __name__ == "__main__":
     main_menu = main_menu()
