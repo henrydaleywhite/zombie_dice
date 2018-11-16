@@ -1,7 +1,7 @@
 import model
 import view
 # default settings for number of players, 
-default_settings = {'number of players': 2}
+default_settings = {'number of players': 4}
 # current player
 player_tracker = [1]
 
@@ -66,8 +66,11 @@ def game_round():
             view.round_so_far(current_shotguns, round_score, model.dice_in_hand)
             view.print_bars()
             round_loss_condition = model.check_loss(current_shotguns)
+            if round_loss_condition:
+                view.three_shot_message()
         else:
             model.choice_bank_score(player_tracker[0], round_score)
+            view.bank_message()
             view.player_score(player_tracker, model.player_scores)
             win_condition = model.player_scores[player_tracker[0]] >= 13
             break

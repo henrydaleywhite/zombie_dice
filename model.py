@@ -135,3 +135,9 @@ def refresh_dice_cup():
     YELLOW_DIE, YELLOW_DIE, YELLOW_DIE, YELLOW_DIE, 
     RED_DIE, RED_DIE, RED_DIE
 ]
+
+
+def refresh_dice_in_hand():
+    """Reset dice in hand variable between players"""
+    global dice_in_hand
+    dice_in_hand = []

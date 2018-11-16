@@ -28,7 +28,7 @@ def settings_view(default_settings):
 
 def player_score(player_tracker, player_scores):
     """Display player's banked score"""
-    print("Current score:", player_scores[player_tracker[0]])
+    print("Player's cumulative score is", player_scores[player_tracker[0]])
 
 
 def player_start(player):
@@ -61,11 +61,13 @@ def show_current_dice(dice_in_hand):
     print()
 
 def show_roll_result(result):
+    """Display the results of the three die rolls"""
     for i in range(3):
         print("{} die had result {}.".format(result[i][0], result[i][1]))
 
 
 def round_so_far(shotguns, points, remaining_dice):
+    """Display status of current round"""
     hand_str = ""
     print("Overall Status: ")
     print("{} points accumulated".format(points))
@@ -76,4 +78,15 @@ def round_so_far(shotguns, points, remaining_dice):
 
 
 def print_bars():
+    """Cosmetic print line breaks and a line for sanity"""
     print("\n", "-"*30, "\n")
+
+
+def three_shot_message():
+    """Loss message"""
+    print("3+ shotgun hits, player loses this round's points")
+
+
+def bank_message():
+    """Display for a player banking round points"""
+    print("Player has banked this round's points")    
