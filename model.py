@@ -63,14 +63,14 @@ dice_cup = [
 
 def player_start_scores(num_players):
     """Populate a blank dictionary with the number of players and starting score 0"""
-    for i in range(1,num_players+1):
+    for i in range(1, num_players + 1):
         player_scores[i] = 0
 
 
 def pull_dice():
     """Draw until player has 3 dice in hand"""
-    for i in range(MAX_HAND_SIZE-len(dice_in_hand)):
-	    die_index = random.randint(0,len(dice_cup)-1)
+    for i in range(MAX_HAND_SIZE - len(dice_in_hand)):
+	    die_index = random.randint(0, len(dice_cup) - 1)
 	    drawn_die = dice_cup.pop(die_index)
 	    dice_in_hand.append(drawn_die)
 
@@ -89,7 +89,7 @@ def choice_roll_dice():
     """Die rolling"""
     roll_results = [[], [], []]
     for i in range(MAX_HAND_SIZE):
-        roll_int = random.randint(1,6)
+        roll_int = random.randint(1, 6)
         die_color = dice_in_hand[i]['color']
         die_result = dice_in_hand[i]['faces'][roll_int]
         die_result_symbol = DIE_FACES[die_result]
@@ -122,7 +122,7 @@ def count_brains(result):
 
 def remove_brain_shotgun_post_roll(result):
     """Remove dice that rolled a brain or a shotgun from current hand (dice_in_hand)"""
-    for i in range(MAX_HAND_SIZE-1, -1,-1):
+    for i in range(MAX_HAND_SIZE-1, -1, -1):
         if result[i][1] in ("brain", "shotgun"):
             dice_in_hand.pop(i)
 

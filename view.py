@@ -57,7 +57,7 @@ def show_current_dice(dice_in_hand):
     hand_str = ""
     for die in dice_in_hand:
         hand_str += die['color'] + " Die, "
-    print("Dice in hand: {}".format(hand_str[:len(hand_str)-2]))
+    print("Dice in hand: {}".format(hand_str[:len(hand_str) - 2]))
     print()
 
 def show_roll_result(result):
@@ -74,7 +74,7 @@ def round_so_far(shotguns, points, remaining_dice):
     print("{} shotguns hits sustained".format(shotguns))
     for die in remaining_dice:
         hand_str += die['color'] + " Die, "
-    print("Remaining hand is {}".format(hand_str[:len(hand_str)-2]))
+    print("Remaining hand is {}".format(hand_str[:len(hand_str) - 2]))
 
 
 def print_bars():

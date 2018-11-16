@@ -46,11 +46,13 @@ def game_round():
     current_shotguns = 0
     round_score = 0
     round_loss_condition = False
+
     view.player_score(player_tracker, model.player_scores)
-    while win_condition == False and round_loss_condition == False:
+    while win_condition is False and round_loss_condition is False:
         view.show_current_dice(model.dice_in_hand)
         view.show_turn_options()
         turn_input = view.turn_choice_input()
+
         if turn_input not in ('1', '2'):
             view.bad_input()
         elif turn_input == '1':
@@ -60,11 +62,13 @@ def game_round():
             roll_result = model.choice_roll_dice()
             view.show_roll_result(roll_result)
             view.print_bars()
+
             current_shotguns += model.count_shotguns(roll_result)
             round_score += model.count_brains(roll_result)
             model.remove_brain_shotgun_post_roll(roll_result)
             view.round_so_far(current_shotguns, round_score, model.dice_in_hand)
             view.print_bars()
+
             round_loss_condition = model.check_loss(current_shotguns)
             if round_loss_condition:
                 view.three_shot_message()
