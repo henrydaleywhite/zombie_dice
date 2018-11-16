@@ -125,3 +125,13 @@ def remove_brain_shotgun_post_roll(result):
     for i in range(MAX_HAND_SIZE-1, -1,-1):
         if result[i][1] in ("brain", "shotgun"):
             dice_in_hand.pop(i)
+
+
+def refresh_dice_cup():
+    """Restock cup with 13 dice between players"""
+    global dice_cup
+    dice_cup = [
+    GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, GREEN_DIE, 
+    YELLOW_DIE, YELLOW_DIE, YELLOW_DIE, YELLOW_DIE, 
+    RED_DIE, RED_DIE, RED_DIE
+]

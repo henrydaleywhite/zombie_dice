@@ -73,3 +73,7 @@ def round_so_far(shotguns, points, remaining_dice):
     for die in remaining_dice:
         hand_str += die['color'] + " Die, "
     print("Remaining hand is {}".format(hand_str[:len(hand_str)-2]))
+
+
+def print_bars():
+    print("\n", "-"*30, "\n")

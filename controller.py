@@ -1,7 +1,7 @@
 import model
 import view
 # default settings for number of players, 
-default_settings = {'number of players': 4}
+default_settings = {'number of players': 2}
 # current player
 player_tracker = [1]
 
@@ -35,11 +35,13 @@ def play_game():
             view.player_win(player_tracker[0])
             return True    
         model.next_player(player_tracker, default_settings['number of players'])
+        model.refresh_dice_cup()
 
 
 def game_round():
     """Functionality for individual player rounds"""
     win_condition = model.player_scores[player_tracker[0]] >= 13
+    view.print_bars()
     view.player_start(player_tracker)
     current_shotguns = 0
     round_score = 0
@@ -52,18 +54,23 @@ def game_round():
         if turn_input not in ('1', '2'):
             view.bad_input()
         elif turn_input == '1':
+            view.print_bars()
             model.pull_dice()
             view.show_current_dice(model.dice_in_hand)
             roll_result = model.choice_roll_dice()
             view.show_roll_result(roll_result)
+            view.print_bars()
             current_shotguns += model.count_shotguns(roll_result)
             round_score += model.count_brains(roll_result)
             model.remove_brain_shotgun_post_roll(roll_result)
             view.round_so_far(current_shotguns, round_score, model.dice_in_hand)
+            view.print_bars()
             round_loss_condition = model.check_loss(current_shotguns)
         else:
             model.choice_bank_score(player_tracker[0], round_score)
             view.player_score(player_tracker, model.player_scores)
+            win_condition = model.player_scores[player_tracker[0]] >= 13
+            break
     return win_condition
         
 
