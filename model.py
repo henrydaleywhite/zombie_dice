@@ -89,7 +89,7 @@ def choice_roll_dice():
     """Die rolling"""
     roll_results = [[], [], []]
     for i in range(MAX_HAND_SIZE):
-        roll_int = random.randint(0,5)
+        roll_int = random.randint(1,6)
         die_color = dice_in_hand[i]['color']
         die_result = dice_in_hand[i]['faces'][roll_int]
         die_result_symbol = DIE_FACES[die_result]
@@ -100,3 +100,28 @@ def choice_roll_dice():
 def choice_bank_score(current_player, round_score):
     """Add score from this round to cumulative player score"""
     player_scores[current_player] += round_score
+
+
+def count_shotguns(result):
+    """Count shotguns present in most recent roll"""
+    shot_count = 0
+    for i in range(MAX_HAND_SIZE):
+        if result[i][1] == "shotgun":
+            shot_count += 1
+    return shot_count
+
+
+def count_brains(result):
+    """Count brains present in most recent roll"""
+    brain_count = 0
+    for i in range(MAX_HAND_SIZE):
+        if result[i][1] == "brain":
+            brain_count += 1
+    return brain_count
+
+
+def remove_brain_shotgun_post_roll(result):
+    """Remove dice that rolled a brain or a shotgun from current hand (dice_in_hand)"""
+    for i in range(MAX_HAND_SIZE-1, -1,-1):
+        if result[i][1] in ("brain", "shotgun"):
+            dice_in_hand.pop(i)

@@ -2,7 +2,7 @@ def display_menu(default_settings):
     """Display options for main menu"""
     print("Welcome to Zombie Dice!\n")
     print("1. Play")
-    print("2. Number of players - currently", default_settings[0])
+    print("2. Number of players - currently", default_settings['number of players'])
     print("3. Exit")
 
 
@@ -54,9 +54,22 @@ def turn_choice_input():
 
 def show_current_dice(dice_in_hand):
     """Display the dice that the player currently holds"""
-    print("\nDice in hand: ")
     hand_str = ""
     for die in dice_in_hand:
         hand_str += die['color'] + " Die, "
-    print(hand_str)
+    print("Dice in hand: {}".format(hand_str[:len(hand_str)-2]))
     print()
+
+def show_roll_result(result):
+    for i in range(3):
+        print("{} die had result {}.".format(result[i][0], result[i][1]))
+
+
+def round_so_far(shotguns, points, remaining_dice):
+    hand_str = ""
+    print("Overall Status: ")
+    print("{} points accumulated".format(points))
+    print("{} shotguns hits sustained".format(shotguns))
+    for die in remaining_dice:
+        hand_str += die['color'] + " Die, "
+    print("Remaining hand is {}".format(hand_str[:len(hand_str)-2]))
