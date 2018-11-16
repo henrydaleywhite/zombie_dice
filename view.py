@@ -60,6 +60,7 @@ def show_current_dice(dice_in_hand):
     print("Dice in hand: {}".format(hand_str[:len(hand_str) - 2]))
     print()
 
+
 def show_roll_result(result):
     """Display the results of the three die rolls"""
     for i in range(3):

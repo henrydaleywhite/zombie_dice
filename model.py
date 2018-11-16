@@ -4,6 +4,7 @@ dice_in_hand = []
 
 MAX_HAND_SIZE = 3
 
+# lookup for emoji results should they be used for display in later design
 DIE_FACES = {
     "brain": "👍",
     "shotgun": "👎",
@@ -70,13 +71,14 @@ def player_start_scores(num_players):
 def pull_dice():
     """Draw until player has 3 dice in hand"""
     for i in range(MAX_HAND_SIZE - len(dice_in_hand)):
+        # pull random number between 0 and the number of dice in the cup
 	    die_index = random.randint(0, len(dice_cup) - 1)
 	    drawn_die = dice_cup.pop(die_index)
 	    dice_in_hand.append(drawn_die)
 
 
 def next_player(current_player, number_players):
-    """Move to next player"""
+    """Move to next player, mod included to cycle back to first player"""
     current_player[0] = (current_player[0] % number_players) + 1
 
 
@@ -86,7 +88,7 @@ def check_loss(current_shotguns):
         
 
 def choice_roll_dice():
-    """Die rolling"""
+    """Die rolling- returns color, text result, and emoji for each rolled die"""
     roll_results = [[], [], []]
     for i in range(MAX_HAND_SIZE):
         roll_int = random.randint(1, 6)
@@ -94,16 +96,17 @@ def choice_roll_dice():
         die_result = dice_in_hand[i]['faces'][roll_int]
         die_result_symbol = DIE_FACES[die_result]
         roll_results[i] = [die_color, die_result, die_result_symbol]
+    # list of 3 lists with 3 elements each
     return roll_results
 
 
 def choice_bank_score(current_player, round_score):
-    """Add score from this round to cumulative player score"""
+    """Add score from this round to cumulative player score when player banks"""
     player_scores[current_player] += round_score
 
 
 def count_shotguns(result):
-    """Count shotguns present in most recent roll"""
+    """Count shotguns present in most recent roll for remaining lives"""
     shot_count = 0
     for i in range(MAX_HAND_SIZE):
         if result[i][1] == "shotgun":
@@ -112,7 +115,7 @@ def count_shotguns(result):
 
 
 def count_brains(result):
-    """Count brains present in most recent roll"""
+    """Count brains present in most recent roll for round score"""
     brain_count = 0
     for i in range(MAX_HAND_SIZE):
         if result[i][1] == "brain":
